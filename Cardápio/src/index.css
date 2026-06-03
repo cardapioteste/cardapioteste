@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Cinzel:wght@550;700;800&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-chalk: "Caveat", cursive;
+  --font-serif: "Cinzel", Georgia, serif;
+  --font-display: "Playfair Display", Georgia, serif;
+}
+
+/* Custom Crumpled Royal Blue Paper Texture and Bar Glow effects */
+.bg-royal-crumpled {
+  background-color: #030a16;
+  background-image: 
+    radial-gradient(circle at 50% 45%, rgba(13, 38, 77, 0.96) 0%, rgba(4, 11, 24, 0.98) 75%, rgba(2, 6, 14, 1) 100%),
+    repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.012) 0px, rgba(255, 255, 255, 0.012) 1px, transparent 1px, transparent 15px),
+    repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.15) 0px, rgba(0, 0, 0, 0.15) 1px, transparent 1px, transparent 10px);
+  background-size: cover;
+  position: relative;
+}
+
+.bg-royal-crumpled::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top right, rgba(234, 179, 8, 0.04), transparent 60%),
+              radial-gradient(circle at bottom left, rgba(234, 179, 8, 0.03), transparent 50%);
+  pointer-events: none;
+}
+
+/* Custom chalk sketchy border */
+.border-chalk {
+  border-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><rect x='5' y='5' width='90' height='90' fill='none' stroke='%23ffffff' stroke-width='2' stroke-dasharray='10 5 4 10 5' rx='3' stroke-linecap='round' opacity='0.25'/></svg>") 10 repeat;
+}
+
+/* Custom glow effects for highlighted text */
+.text-neon-amber {
+  color: #FBBF24;
+  text-shadow: 0 0 8px rgba(251, 191, 36, 0.4), 0 0 20px rgba(251, 191, 36, 0.2);
+}
+
+.text-neon-lime {
+  color: #a3e635;
+  text-shadow: 0 0 8px rgba(163, 230, 53, 0.4);
+}
+
+/* Beer bubbles background animation */
+@keyframes rise {
+  0% {
+    transform: translateY(100%) scale(1);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-20%) scale(1.5);
+    opacity: 0;
+  }
+}
+
+.bubbler-bubble {
+  position: absolute;
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.3), rgba(217, 119, 6, 0.1));
+  border-radius: 50%;
+  pointer-events: none;
+  bottom: 0;
+}
+
+/* Custom page flipping animations */
+.page-container {
+  perspective: 1500px;
+}
+
+/* Custom styled scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(18, 18, 20, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(251, 191, 36, 0.3);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(251, 191, 36, 0.6);
+}
+
+/* Smooth active state transitions */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
